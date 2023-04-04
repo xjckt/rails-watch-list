@@ -1,10 +1,23 @@
-<h2><%= @list.name %></h2>
-
-
-
-<%= link_to "Delete",
-  list_path(@list),
-  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-%>
-
-<%= link_to("Return to lists", lists_path) %>
+ <div class="container">
+  <div class="cover mb-4 d-flex align-items-center justify-content-center">
+    <div class="text-center text-gray">
+      <h1><%= @list.name %></h1>
+    </div>
+  </div>
+  <div class="row mb-4 py-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <%= link_to "Add a movie to your list", new_list_bookmark_path(@list), class: "btn btn-flat" %>
+      <%= link_to "Delete",list_path(@list), class:"btn btn-ghost", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    </div>
+  </div>
+  <div class="row movies-grid">
+    <ul>
+      <% @list.movies.each do |movie| %>
+      <%= movie.title %>
+      <%= movie.rating %>
+      <%= movie.poster_url %>
+      <%= movie.overview %>
+      <% end %>
+    </ul>
+  </div>
+</div>

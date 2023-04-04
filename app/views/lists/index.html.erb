@@ -1,21 +1,24 @@
-
-<div class="cover mb-4 d-flex align-items-center justify-content-center">
-  <div class="text-center text-gray">
-    <h1>Watch List</h1>
+<div class="banner" style="background-image: url(https://img.freepik.com/free-vector/cinema-movie-showtime-with-film-strip-background_1017-33455.jpg?w=1800&t=st=1680602408~exp=1680603008~hmac=fad6678b14906817244d88e55cb6cd4e04be4552e91238cadb3e9083ad2a9d1b);">
+  <div class="container">
+    <h1 class="text-center">Watch List</h1>
   </div>
 </div>
+
 <div class="container py-5">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <h3 class="mb-0">My Lists</h3>
+  <div class="d-flex align-items-center">
     <%= link_to "Create a movie list", new_list_path, class: "btn btn-primary" %>
   </div>
   <div class="row">
-    <% @lists.each do |list| %>
-      <div>
-        <%= link_to list_path(list), class:"text-decoration-none" do %>
-          <%= list.name %>
-        <% end %>
-      </div>
-    <% end %>
+    <ul class="m-4" style="list-style: none">
+      <% @lists.each do |list| %>
+        <li class="m-4">
+          <a class="card-link" href="<%= list_path(list) %>">
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1548159417-f283998827c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)">
+            <span><%= list.name %></span>
+            </div>
+          </a>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
